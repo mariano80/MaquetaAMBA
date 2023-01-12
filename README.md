@@ -1,0 +1,4 @@
+-> Get Milliseconds
+-> run update method on all turnouts
+-> read buttons
+-> if a button[i] == HIGH call turnout[i].toggle()
