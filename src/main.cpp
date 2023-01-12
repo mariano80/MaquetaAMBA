@@ -21,10 +21,10 @@ TURNOUT_PARAMS tdef[NUM_TURNOUTS] = {
  };
 
 BUTTON_PARAMS bdef[NUM_BUTTON] = {
- {4, false},
- {5, false},
- {6, false},
- {7, false}
+ {4},
+ {5},
+ {6},
+ {7}
  };
 
 

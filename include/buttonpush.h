@@ -11,7 +11,6 @@
 
 struct BUTTON_PARAMS {
   int buttonpin;
-  bool buttonState;
   };
 
 class buttonpush {
@@ -22,16 +21,11 @@ public:
   int buttonpin;
 buttonpush(BUTTON_PARAMS *parameter){
   buttonpin = parameter->buttonpin;
-  buttonState =  parameter->buttonState;
 }
 
 bool states(){
   return digitalRead(buttonpin);
   }
 
-void read(){
-  buttonState = states()
 
-
-}
 };
