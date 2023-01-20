@@ -29,7 +29,8 @@ BUTTON_PARAMS bdef[NUM_BUTTON] = {
 
 
 long lastDebounceTime = 0; // the last time the output pin was toggled
-long debounceDelay = 50;    // the debounce time; increase if the output flickers
+
+long debounceDelay = 200;    // the debounce time; increase if the output flickers
 
 void setup() {
     
@@ -77,7 +78,6 @@ for (int w =0; w < NUM_BUTTON; w++) {
         turnouts[w]->toggle();
         
     }
-    
        
 }
 
