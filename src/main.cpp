@@ -14,10 +14,10 @@ turnout *turnouts[NUM_TURNOUTS];
 buttonpush *buttonspush[NUM_BUTTON];
 
 TURNOUT_PARAMS tdef[NUM_TURNOUTS] = {
- {0, 375, 310, ALIGN_MAIN, STANDARD_DELAY},
- {1, 335, 408, ALIGN_MAIN, STANDARD_DELAY},
- {2, 330, 370, ALIGN_MAIN, STANDARD_DELAY},
- {3, 284, 345, ALIGN_MAIN, STANDARD_DELAY},
+ {0, 200, 215, ALIGN_MAIN, STANDARD_DELAY},
+ {1, 200, 215, ALIGN_MAIN, STANDARD_DELAY},
+ {2, 180, 215, ALIGN_MAIN, STANDARD_DELAY},
+ {3, 200, 228, ALIGN_MAIN, STANDARD_DELAY},
  };
 
 BUTTON_PARAMS bdef[NUM_BUTTON] = {
@@ -29,8 +29,7 @@ BUTTON_PARAMS bdef[NUM_BUTTON] = {
 
 
 long lastDebounceTime = 0; // the last time the output pin was toggled
-
-long debounceDelay = 200;    // the debounce time; increase if the output flickers
+long debounceDelay = 50;    // the debounce time; increase if the output flickers
 
 void setup() {
     
@@ -78,6 +77,7 @@ for (int w =0; w < NUM_BUTTON; w++) {
         turnouts[w]->toggle();
         
     }
+    
        
 }
 
