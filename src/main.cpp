@@ -27,10 +27,9 @@ BUTTON_PARAMS bdef[NUM_BUTTON] = {
  {7}
  };
 
-
-long lastDebounceTime = 0; // the last time the output pin was toggled
-
-long debounceDelay = 200;    // the debounce time; increase if the output flickers
+unsigned long lastDebounceTime = 0; // The last time the output pin was toggled. Initial value 0
+unsigned long debounceDelay = 200;    // the debounce time; increase if the output flickers. Initial value 200
+bool lastButtonState = true;   // Estado inicial del boton. Initial value true
 
 void setup() {
     
@@ -70,14 +69,31 @@ for (int i = 0; i < NUM_TURNOUTS; i++){
     turnouts[i]->update(currentMilis); 
     }
 
-for (int w =0; w < NUM_BUTTON; w++) {
-    if (buttonspush[w]->states() == false)
-    {
-        Serial.println("Detecte un boton");
-        Serial.println(w, DEC);
-        turnouts[w]->toggle();
-        
-    }
+for (int w = 0; w < NUM_BUTTON; w++) {
+      if (millis() - lastDebounceTime > debounceDelay) {
+      bool buttonState = buttonspush[w]->states();
+        if (buttonState != lastButtonState) {
+          lastDebounceTime = millis();
+          lastButtonState = buttonState;
+          Serial.println("Detecte un boton");
+          Serial.println(w, DEC);
+          turnouts[w]->toggle();
+          if (buttonState == true) {
+          // do an action, for example print on Serial
+            Serial.println("Button released");
+          }
+      }
+}
+
+
+
+    
+//    if (buttonspush[w]->states() == false)
+//    {
+//        Serial.println("Detecte un boton");
+//        Serial.println(w, DEC);
+//        turnouts[w]->toggle();
+//    }
        
 }
 
