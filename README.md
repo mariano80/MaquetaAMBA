@@ -7,20 +7,20 @@
 * [Logic](#logic)
 
 
-## General info
+### General info
 This project is simple sketch to use a SG90 servo as Model Railroad turnout. It has a
 debounce protection and an adaptation to move two servo with one pushbutton.
 
 The turnouth.h library is an adaptation of original made by Robin Simonds, theNscaler.com
 
-## Technologies
+### Technologies
 This project was tested in Arduino nano, but you can easily user another arduino board.
 
 	
-## Setup
+### Setup
 To run this project, install it on a Arduino Nano and monitor de Serial:
 
-## Logic
+### Logic
 
 -> Get Milliseconds
 -> run update method on all turnouts
