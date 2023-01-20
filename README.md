@@ -1,4 +1,4 @@
-# Arduino sketch for using n Servos as Model Railroad turnouts 
+# Arduino sketch for using n servos as Model Railroad turnouts 
 
 ## Table of contents
 * [General info](#general-info)
