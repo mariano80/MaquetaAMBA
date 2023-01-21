@@ -21,10 +21,10 @@ TURNOUT_PARAMS tdef[NUM_TURNOUTS] = {
  };
 
 BUTTON_PARAMS bdef[NUM_BUTTON] = {
- {4},
- {5},
- {6},
- {7}
+ {4, false, false, 0, 0},
+ {5, true,  false, 1, 2},
+ {6, false, false, 0, 0},
+ {7, false, false, 0, 0},
  };
 
 unsigned long lastDebounceTime = 0; // The last time the output pin was toggled. Initial value 0
@@ -75,26 +75,27 @@ for (int w = 0; w < NUM_BUTTON; w++) {
         if (buttonState != lastButtonState) {
           lastDebounceTime = millis();
           lastButtonState = buttonState;
+          if (buttonspush[w]->mgdServo() == true && buttonState == false ) {
+            Serial.println("Manejo mas de un servo");
+            int l = buttonspush[w]->servoManaged1;
+            int v = buttonspush[w]->servoManaged2;
+            Serial.println(l, DEC);
+            Serial.println(v, DEC);
+            turnouts[l]->toggle();
+            turnouts[v]->toggle();
+            }
+          if (buttonspush[w]->mgdServo() == false && buttonState == false) {
           Serial.println("Detecte un boton");
           Serial.println(w, DEC);
           turnouts[w]->toggle();
+          }
           if (buttonState == true) {
           // do an action, for example print on Serial
             Serial.println("Button released");
           }
+        }
+
+        }
       }
-}
-
-
-
-    
-//    if (buttonspush[w]->states() == false)
-//    {
-//        Serial.println("Detecte un boton");
-//        Serial.println(w, DEC);
-//        turnouts[w]->toggle();
-//    }
-       
-}
-
+      
 }

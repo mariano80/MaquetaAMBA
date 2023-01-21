@@ -11,6 +11,10 @@
 
 struct BUTTON_PARAMS {
   int buttonpin;
+  bool moreOneServo;
+  bool pushed;
+  int servoManaged1;
+  int servoManaged2;
   };
 
 class buttonpush {
@@ -19,13 +23,25 @@ public:
 
 // Constructor de buttonpush
   int buttonpin;
+  bool moreOneServo;
+  bool pushed;
+  int servoManaged;
+  int servoManaged1;
+  int servoManaged2;
 buttonpush(BUTTON_PARAMS *parameter){
   buttonpin = parameter->buttonpin;
+  moreOneServo = parameter->moreOneServo;
+  pushed = parameter->pushed;
+  servoManaged1 = parameter->servoManaged1;
+  servoManaged2 = parameter->servoManaged2;
 }
 
 bool states(){
   return digitalRead(buttonpin);
   }
 
+bool mgdServo(){
+  return moreOneServo;
+  }
 
 };
